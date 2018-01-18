@@ -1,0 +1,12 @@
+<div class="widget-wrap">
+  <h3 class="widget-title">Archives</h3>
+  <div class="widget">
+    <ul class="archive-list">
+      <% recentArchives.forEach(function(recentArchive) { %>
+      <li class="archive-list-item">
+        <a class="archive-list-link" href="<%- recentArchive.link %>"><%- recentArchive.title %></a>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+</div>

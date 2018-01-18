@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <% include _partial/head.ejs %>
+  <body>
+    <div id="container">
+      <div id="wrap">
+        <% include _partial/header.ejs %>
+        <div class="outer">
+          <section id="main">
+            <% articles.forEach(function(article) { %>
+              <article id="post-<%- article.slug %>" class="article article-type-post" itemscope itemprop="blogPost">
+                <div class="article-meta">
+                  <a href="article.html" class="article-date">
+                    <time datetime="<%- article.date %>" itemprop="datePublished"><%- article.date %></time>
+                  </a>
+                </div>
+                <div class="article-inner">
+                  <header class="article-header">
+                    <h1 itemprop="name">
+                      <a class="article-title" href="<%- article.link %>"><%- article.title %></a>
+                    </h1>
+                  </header>
+                  <div class="article-entry" itemprop="articleBody">
+                    <%- article.summary %>
+                  </div>
+                  <footer class="article-footer">
+                    <a data-url="<%- article.link %>" data-id="cjbje9zvn0000kdp3yixw4sbr" class="article-share-link">Share</a>
+                  </footer>
+                </div>
+              </article>
+            <% }) %>
+          </section>
+          <% include _partial/sidebar.ejs %>
+        </div>
+        <% include _partial/footer.ejs %>
+      </div>
+      <% include _partial/mobile-nav.ejs %>
+    </div>
+  </body>
+</html>

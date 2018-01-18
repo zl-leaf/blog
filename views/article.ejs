@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <% include _partial/head.ejs %>
+  <body>
+    <div id="container">
+      <div id="wrap">
+        <% include _partial/header.ejs %>
+        <div class="outer">
+          <section id="main">
+            <article id="post-browser-timing" class="article article-type-post" itemscope itemprop="blogPost">
+              <div class="article-meta">
+                <a href="<%- article.link %>" class="article-date">
+                  <time datetime="<%- article.link %>" itemprop="datePublished"><%- article.date %></time>
+                </a>
+              </div>
+              <div class="article-inner">
+                <header class="article-header">
+                  <h1 class="article-title" itemprop="name"><%- article.title %></h1>
+                </header>
+                <div class="article-entry" itemprop="articleBody">
+                  <%- article.content %>
+                </div>
+                <footer class="article-footer">
+                  <a data-url="<%- article.link %>" data-id="cjbje9zvn0000kdp3yixw4sbr" class="article-share-link">Share</a>
+                </footer>
+              </div>
+            </article>
+          </section>
+          <% include _partial/sidebar.ejs %>
+        </div>
+        <% include _partial/footer.ejs %>
+      </div>
+      <% include _partial/mobile-nav.ejs %>
+  </body>
+</html>
