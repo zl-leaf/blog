@@ -4,6 +4,6 @@ db.json
 package-lock.json
 *.log
 node_modules/
-public/
+public/dist/
 .deploy*/
 source/_posts/*
