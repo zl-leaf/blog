@@ -7,3 +7,4 @@ node_modules/
 public/dist/
 .deploy*/
 source/_posts/*
+webpack.dev.config.js
