@@ -10,7 +10,7 @@
             <% articles.forEach(function(article) { %>
               <article id="post-<%- article.slug %>" class="article article-type-post" itemscope itemprop="blogPost">
                 <div class="article-meta">
-                  <a href="article.html" class="article-date">
+                  <a href="<%- article.link %>" class="article-date">
                     <time datetime="<%- article.date %>" itemprop="datePublished"><%- article.date %></time>
                   </a>
                 </div>
