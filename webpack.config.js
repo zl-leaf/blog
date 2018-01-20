@@ -5,7 +5,7 @@ module.exports = {
   output: {
     path: __dirname + "/public/dist",//打包后的文件存放的地方
     filename: "js/[name].bundle.js",//打包后输出文件的文件名
-    publicPath: "/dist/"
+    publicPath: "http://res.yipzale.me/dist/"
   },
   module: {
     rules: [
@@ -34,13 +34,13 @@ module.exports = {
       },
       {
         test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
-        loader: "file-loader?name=/front/[name]-[hash].[ext]"
+        loader: "file-loader?name=front/[name]-[hash].[ext]"
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
           {
-            loader: "file-loader?name=/images/[name]-[hash].[ext]"
+            loader: "file-loader?name=images/[name]-[hash].[ext]"
           },
           {
             loader: 'image-webpack-loader',
