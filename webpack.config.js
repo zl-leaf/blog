@@ -37,8 +37,30 @@ module.exports = {
         loader: "file-loader?name=/front/[name]-[hash].[ext]"
       },
       {
-        test: /\.(jpg)([\?]?.*)$/,
-        loader: "file-loader?name=/images/[name]-[hash].[ext]"
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [
+          {
+            loader: "file-loader?name=/images/[name]-[hash].[ext]"
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              optipng: {
+                optimizationLevel: 7,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              pngquant: {
+                quality: "65-90",
+                speed: 4
+              },
+              mozjpeg: {
+                quality: 65
+              }
+            }
+          }
+        ]
       }
     ]
   }

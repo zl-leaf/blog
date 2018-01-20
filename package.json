@@ -19,6 +19,7 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "file-loader": "^1.1.6",
+    "image-webpack-loader": "^3.4.2",
     "marked": "^0.3.9",
     "moment": "^2.20.1",
     "morgan": "^1.9.0",
