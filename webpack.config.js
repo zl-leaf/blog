@@ -1,10 +1,11 @@
 module.exports = {
   entry: {
-    edit: __dirname + "/public/js/edit.js"
+    main: __dirname + "/public/js/main.js"
   },
   output: {
-    path: __dirname + "/public",//打包后的文件存放的地方
-    filename: "dist/js/[name].bundle.js"//打包后输出文件的文件名
+    path: __dirname + "/public/dist",//打包后的文件存放的地方
+    filename: "js/[name].bundle.js",//打包后输出文件的文件名
+    publicPath: "/dist/"
   },
   module: {
     rules: [
@@ -27,19 +28,18 @@ module.exports = {
             loader: "style-loader"
           },
           {
-            loader: "css-loader"
+            loader: "css-loader?name=/css/[name]-[hash].[ext]"
           }
         ]
       },
       {
         test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
-        loader: "file-loader?name=/dist/front/[name]-[hash].[ext]"
+        loader: "file-loader?name=/front/[name]-[hash].[ext]"
+      },
+      {
+        test: /\.(jpg)([\?]?.*)$/,
+        loader: "file-loader?name=/images/[name]-[hash].[ext]"
       }
     ]
-  },
-  resolve: {
-    alias: {
-      vue: "vue/dist/vue.js"
-    }
   }
 }
