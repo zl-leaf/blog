@@ -1,24 +1,29 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
+var webpack = require('webpack');
+
+var hotMiddlewareScript = "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true";
+var cdnHost = 'http://res.yipzale.me';
+var devHost = 'http://dev-blog.yipzale.me:9080';
+
 module.exports = {
+  context: __dirname,
   entry: {
-    main: __dirname + "/public/js/main.js"
+    main: [
+      // hotMiddlewareScript,
+      path.resolve(__dirname, "./public/js/main.js"),
+    ]
   },
   output: {
-    path: __dirname + "/public/dist",//打包后的文件存放的地方
-    filename: "js/[name].bundle.js",//打包后输出文件的文件名
-    publicPath: "http://res.yipzale.me/dist/"
+    path: path.resolve(__dirname, "./public/dist"),
+    filename: "js/[name].bundle.js",
+    publicPath: process.env.NODE_ENV == 'production' ? cdnHost + "/dist/" : devHost + "/dist/"
   },
   module: {
     rules: [
       {
-        test: /(\.jsx|\.js)$/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-                "env", "react"
-            ]
-          }
-        },
+        test: /\.js$/,
+        loader: "babel-loader",
         exclude: /node_modules/
       },
       {
@@ -63,5 +68,10 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    // new webpack.optimize.OccurrenceOrderPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
+    // new webpack.NoEmitOnErrorsPlugin()
+  ]
 }

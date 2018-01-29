@@ -12,6 +12,25 @@ var article = require('./routes/article');
 
 var app = express();
 
+// webpak
+if (process.env.NODE_ENV == 'development') {
+  var webpack = require('webpack');
+  var webpackDevMiddleware = require('webpack-dev-middleware');
+  // var webpackHotMiddleware = require('webpack-hot-middleware');
+  var webpackConf = require('./webpack.config.js');
+  var compiler = webpack(webpackConf);
+  app.use(webpackDevMiddleware(compiler, {
+    publicPath: webpackConf.output.publicPath,
+    // noInfo: true,
+    stats: {
+        chunks: false,
+        colors: true
+    }
+  }));
+  // app.use(webpackHotMiddleware(compiler));
+}
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
