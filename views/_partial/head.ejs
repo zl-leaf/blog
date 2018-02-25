@@ -1,13 +1,11 @@
 <head>
     <meta charset="utf-8">
-    <title>yipzale</title>
+    <title><% if(locals.tkd) { %><%- tkd.title %><% } else { %> yipzale <% } %></title>
+    <meta name="keywords" content="<% if(locals.tkd && tkd.keywords) { %><%- tkd.keywords %><% } else { %> yipzale,blog,docker,php <% } %>">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="yipzale">
+    <meta property="og:title" content="<% if(locals.tkd) { %><%- tkd.title %><% } else { %> yipzale <% } %>">
     <meta property="og:url" content="http://www.yipzale.me">
     <meta property="og:site_name" content="yipzale">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="yipzale">
-    <link rel="alternate" href="/atom.xml" title="yipzale" type="application/atom+xml">
     <script src="/dist/js/main.bundle.js"></script>
 </head>

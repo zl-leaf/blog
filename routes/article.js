@@ -17,7 +17,16 @@ router.get('/:year/:month/:slug.html', function(req, res, next) {
     recentArchives: loadRecentArchives(),
     recentArticles: loadRecentArticles(),
   }).then(function(data) {
-    res.render('article', { article: data.article, recentArchives: data.recentArchives, recentArticles: data.recentArticles});
+    var renderData = {
+      tkd: {
+        title: data.article.title,
+        keywords: data.article.keywords,
+      },
+      article: data.article,
+      recentArchives: data.recentArchives,
+      recentArticles: data.recentArticles
+    };
+    res.render('article', renderData);
   });
 
 });

@@ -7,6 +7,7 @@ var request = require('request');
 function Article(data) {
     this.title = data.title;
     this.slug = data.slug;
+    this.keywords = data.keywords;
     this.raw = data.raw;
     if (data.summary) {
         this.summary = marked(data.summary);
