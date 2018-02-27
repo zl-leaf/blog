@@ -9,9 +9,7 @@ function Article(data) {
     this.slug = data.slug;
     this.keywords = data.keywords;
     this.raw = data.raw;
-    if (data.summary) {
-        this.summary = marked(data.summary);
-    }
+    this.summary = data.summary;
     this.content = '';
 
     // link

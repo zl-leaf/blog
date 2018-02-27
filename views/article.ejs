@@ -5,18 +5,21 @@
     <div id="container">
       <div id="wrap">
         <% include _partial/header.ejs %>
-        <div class="outer">
+        <div class="content">
           <section id="main">
-            <article id="post-browser-timing" class="article article-type-post" itemscope itemprop="blogPost">
-              <div class="article-meta">
-                <a href="<%- article.link %>" class="article-date">
-                  <time datetime="<%- article.link %>" itemprop="datePublished"><%- article.date %></time>
-                </a>
-              </div>
+            <article id="post-browser-timing" class="article" itemscope itemprop="blogPost">
               <div class="article-inner">
                 <header class="article-header">
                   <h1 class="article-title" itemprop="name"><%- article.title %></h1>
                 </header>
+                <hr>
+                <div class="article-meta">
+                  <time datetime="<%- article.link %>"><%- article.date %></time>
+                </div>
+                <div class="article-summary">
+                  <%- article.summary %>
+                </div>
+                <hr>
                 <div class="article-entry" itemprop="articleBody">
                   <%- article.content %>
                 </div>

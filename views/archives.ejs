@@ -5,30 +5,21 @@
     <div id="container">
       <div id="wrap">
         <% include _partial/header.ejs %>
-        <div class="outer">
+        <div class="content">
           <section id="main">
             <% archives.forEach(function(archive) { %>
               <% archive.archive_nodes.forEach(function(archive_node) { %>
               <section class="archives-wrap">
-                <div class="archive-year-wrap">
-                  <a href="<%- archive.link %>" class="archive-year"><%- archive.title %></a>
-                </div>
-                <div class="archives">
+                <h1><%- archive.title %></h1>
+                <ul>
                   <% archive_node.articles.forEach(function(article) { %>
-                  <article class="archive-article archive-type-post">
-                    <div class="archive-article-inner">
-                      <header class="archive-article-header">
-                        <a href="<%- article.link %>" class="archive-article-date">
-                          <time datetime="<%- article.date %>" itemprop="datePublished"><%- article.date %></time>
-                        </a>
-                        <h1 itemprop="name">
-                          <a class="archive-article-title" href="<%- article.link %>"><%- article.title %></a>
-                        </h1>
-                      </header>
-                    </div>
-                  </article>
+                  <li>
+                    <time datetime="<%- article.date %>"><%- article.date %></time>
+                    <a href="<%- article.link %>"><%- article.title %></a>
+                  </li>
                   <% }) %>
-                </div>
+                </ul>
+                <hr>
               </section>
               <% }) %>
             <% }) %>
