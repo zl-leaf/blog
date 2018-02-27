@@ -456,7 +456,8 @@ body {
 .preview p {
   color: #333
 }
-.preview:hover {
+.preview:hover,
+.preview p:hover {
   color: #777;
 }
 .preview h1 {
