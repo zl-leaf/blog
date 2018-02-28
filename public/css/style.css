@@ -110,13 +110,6 @@ button::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
-@font-face {
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  src: url("../fonts/fontawesome-webfont.eot?v=#4.0.3");
-  src: url("../fonts/fontawesome-webfont.eot?#iefix&v=#4.0.3") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff?v=#4.0.3") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=#4.0.3") format("truetype"), url("../fonts/fontawesome-webfont.svg#fontawesomeregular?v=#4.0.3") format("svg");
-}
 hr {
   border: 0;
   border-top: 1px solid #ddd;
@@ -232,7 +225,7 @@ body {
   opacity: 1;
 }
 .nav-icon {
-  font-family: FontAwesome;
+  font-family: iconfont !important;
   text-align: center;
   font-size: 14px;
   width: 14px;
@@ -254,7 +247,7 @@ body {
   display: none;
 }
 #main-nav-toggle:before {
-  content: "\f0c9";
+  /*content: "\f0c9";*/
 }
 @media screen and (max-width: 479px) {
   #main-nav-toggle {
@@ -265,11 +258,8 @@ body {
   float: right;
   margin-right: -15px;
 }
-#nav-rss-link:before {
-  content: "\f09e";
-}
 #nav-search-btn:before {
-  content: "\f002";
+  /*content: "\f002";*/
 }
 #search-form-wrap {
   position: absolute;
@@ -320,7 +310,7 @@ body {
   top: 50%;
   right: 10px;
   margin-top: -7px;
-  font: 13px FontAwesome;
+  font: 13px iconfont;
   border: none;
   background: none;
   color: #bbb;
@@ -570,17 +560,6 @@ body {
 .article-meta:after {
   clear: both;
 }
-.fa {
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.fa-calendar:before {
-  content: "\f073";
-}
 /*widget*/
 
 /*article*/
@@ -638,7 +617,7 @@ a.article-title:hover {
   font-size: 0.85em;
   line-height: 1.6em;
   border-top: 1px solid #ddd;
-  padding-top: 1.6em;
+  padding-top: 1em;
   margin-bottom: 20px;
 }
 .article-footer:before,
@@ -715,116 +694,23 @@ a.article-title:hover {
 /*page*/
 
 /*share*/
-.article-share-link {
-  cursor: pointer;
-  float: right;
-  margin-left: 20px;
-}
-.article-share-link:before {
-  content: "\f064";
-  font-family: FontAwesome;
-  padding-right: 6px;
-}
 .article-share-box {
-  position: absolute;
-  display: none;
   background: #fff;
-  -webkit-box-shadow: 1px 2px 10px rgba(0,0,0,0.2);
-  box-shadow: 1px 2px 10px rgba(0,0,0,0.2);
-  margin-left: -145px;
   overflow: hidden;
   z-index: 1;
 }
-.article-share-box.on {
-  display: block;
-}
-.article-share-input {
-  width: 100%;
-  background: none;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
-  padding: 0 15px;
-  color: #555;
-  outline: none;
-  border: 1px solid #ddd;
-  height: 36px;
-  line-height: 36px;
-}
-.article-share-links {
-  background: #eee;
-}
-.article-share-links:before,
-.article-share-links:after {
-  content: "";
-  display: table;
-}
-.article-share-links:after {
-  clear: both;
-}
-.article-share-twitter,
-.article-share-facebook,
-.article-share-pinterest,
-.article-share-google {
-  width: 50px;
-  height: 36px;
-  display: block;
+.article-share-btn {
   float: left;
-  position: relative;
-  color: #999;
-  text-shadow: 0 1px #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 300px;
+  background-color: #aaa;
+  margin-right: 5px;
 }
-.article-share-twitter:before,
-.article-share-facebook:before,
-.article-share-pinterest:before,
-.article-share-google:before {
-  font-size: 20px;
-  font-family: FontAwesome;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -10px;
-  margin-left: -10px;
-  text-align: center;
-}
-.article-share-twitter:hover,
-.article-share-facebook:hover,
-.article-share-pinterest:hover,
-.article-share-google:hover {
+.article-share-btn a {
   color: #fff;
+  padding: 5px 6px;
 }
-.article-share-twitter:before {
-  content: "\f099";
-}
-.article-share-twitter:hover {
-  background: #00aced;
-  text-shadow: 0 1px #008abe;
-}
-.article-share-facebook:before {
-  content: "\f09a";
-}
-.article-share-facebook:hover {
-  background: #3b5998;
-  text-shadow: 0 1px #2f477a;
-}
-.article-share-pinterest:before {
-  content: "\f0d2";
-}
-.article-share-pinterest:hover {
-  background: #cb2027;
-  text-shadow: 0 1px #a21a1f;
-}
-.article-share-google:before {
-  content: "\f0d5";
-}
-.article-share-google:hover {
-  background: #dd4b39;
-  text-shadow: 0 1px #be3221;
-}
-
 /*share*/
 
 /*other*/

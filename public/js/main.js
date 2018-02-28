@@ -1,4 +1,5 @@
 import '../css/style.css';
+import '../css/font-awesome.min.css';
 
 window.onload = function() {
     document.getElementById('nav-search-btn').onclick = function() {
