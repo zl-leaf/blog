@@ -556,6 +556,31 @@ body {
 .widget ol ol {
   list-style: decimal;
 }
+
+.article-meta {
+  padding: 5px 0;
+  color: #666;
+  margin-bottom: 10px;
+}
+.article-meta:before,
+.article-meta:after {
+  content: "";
+  display: table;
+}
+.article-meta:after {
+  clear: both;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa-calendar:before {
+  content: "\f073";
+}
 /*widget*/
 
 /*article*/
@@ -590,19 +615,6 @@ a.article-title:hover {
 .article-inner {
   overflow: hidden;
   padding-left: 20px;
-}
-.article-meta {
-  padding: 5px 0;
-  color: #666;
-  margin-bottom: 10px;
-}
-.article-meta:before,
-.article-meta:after {
-  content: "";
-  display: table;
-}
-.article-meta:after {
-  clear: both;
 }
 .article-summary {
   padding: 10px 0;
