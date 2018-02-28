@@ -14,7 +14,6 @@ router.get('/:year/:month/:slug.html', function(req, res, next) {
 
   Promise.props({
     article: loadArticle(year, month, slug),
-    recentArchives: loadRecentArchives(),
     recentArticles: loadRecentArticles(),
   }).then(function(data) {
     var renderData = {
@@ -23,7 +22,6 @@ router.get('/:year/:month/:slug.html', function(req, res, next) {
         keywords: data.article.keywords,
       },
       article: data.article,
-      recentArchives: data.recentArchives,
       recentArticles: data.recentArticles
     };
     res.render('article', renderData);

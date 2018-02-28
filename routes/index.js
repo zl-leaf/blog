@@ -11,10 +11,9 @@ var loadRecentArticles = require('../src/handler/load_recent_articles');
 router.get('/', function(req, res, next) {
   Promise.props({
     articles: loadArticles(),
-    recentArchives: loadRecentArchives(),
     recentArticles: loadRecentArticles(),
   }).then(function(data) {
-    res.render('index', { articles: data.articles, recentArchives: data.recentArchives, recentArticles: data.recentArticles});
+    res.render('index', { articles: data.articles, recentArticles: data.recentArticles});
   });
 });
 

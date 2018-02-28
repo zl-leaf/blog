@@ -5,8 +5,7 @@ var config = {
         meta_url: "http://api.yipzale.me/api/article/"
     },
     archives: {
-        list_url: "http://api.yipzale.me/api/archive",
-        recent_url: "http://api.yipzale.me/api/archive/recent"
+        list_url: "http://api.yipzale.me/api/archive"
     }
 }
 module.exports = config;

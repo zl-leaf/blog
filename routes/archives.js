@@ -11,10 +11,9 @@ router.get('/', function(req, res, next) {
 
   Promise.props({
     archives: loadArchives(),
-    recentArchives: loadRecentArchives(),
     recentArticles: loadRecentArticles(),
   }).then(function(data) {
-    res.render('archives', { archives: data.archives, recentArchives:data.recentArchives, recentArticles: data.recentArticles});
+    res.render('archives', { archives: data.archives, recentArticles: data.recentArticles});
   });
 });
 
