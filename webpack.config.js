@@ -39,7 +39,7 @@ module.exports = {
       },
       {
         test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
-        loader: "file-loader?name=front/[name]-[hash].[ext]"
+        loader: "file-loader?name=fonts/[name]-[hash].[ext]"
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
