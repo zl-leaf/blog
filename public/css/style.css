@@ -708,8 +708,19 @@ a.article-title:hover {
   margin-right: 5px;
 }
 .article-share-btn a {
-  color: #fff;
+  font-size: 22px;
+  color: #fff !important;
   padding: 5px 6px;
+  float: none !important;
+  width: auto !important;
+  height: auto !important;
+  line-height: 1em !important;
+  background-image: none !important;
+  text-indent: 0 !important;
+  margin: 0 !important;
+}
+.article-share-btn a:hover {
+  color: #555 !important;
 }
 /*share*/
 
