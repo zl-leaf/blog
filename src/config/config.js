@@ -6,6 +6,9 @@ var config = {
     },
     archives: {
         list_url: "http://api.yipzale.me/api/archive"
+    },
+    editor: {
+        all_url: "http://api.yipzale.me/api/editor/article",
     }
 }
 module.exports = config;

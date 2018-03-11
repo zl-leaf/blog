@@ -1,6 +1,7 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 var webpack = require('webpack');
+var BowerWebpackPlugin = require("bower-webpack-plugin");
 
 var hotMiddlewareScript = "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true";
 var cdnHost = 'http://res.yipzale.me';
@@ -9,9 +10,15 @@ var devHost = 'http://dev-blog.yipzale.me:9080';
 module.exports = {
   context: __dirname,
   entry: {
+    config: [
+      path.resolve(__dirname, "./public/js/" + process.env.NODE_ENV + ".config.js"),
+    ],
     main: [
       // hotMiddlewareScript,
       path.resolve(__dirname, "./public/js/main.js"),
+    ],
+    editor: [
+      path.resolve(__dirname, "./public/js/editor.js"),
     ]
   },
   output: {
@@ -69,9 +76,11 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    alias: {
+      'config': path.resolve(__dirname, "./public/js/" + process.env.NODE_ENV + ".config.js"),
+    }
+  },
   plugins: [
-    // new webpack.optimize.OccurrenceOrderPlugin(),
-    // new webpack.HotModuleReplacementPlugin(),
-    // new webpack.NoEmitOnErrorsPlugin()
   ]
 }

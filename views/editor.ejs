@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>admin</title>
+        <meta charset="utf8">
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/lib/editor.md/css/editormd.min.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+            <h2 class="navbar-brand col-sm-3 col-md-2 mr-0">articles</h2>
+            <ul class="navbar-nav px-3">
+                <li class="nav-item text-nowrap">
+                    <a class="nav-link" href="#">Sign out</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <% articles.forEach(function(article) { %>
+                            <li class="nav-item">
+                              <a class="nav-link article-btn" href="javascript:;" article-id="<%- article.id %>"><%- article.title %></a>
+                            </li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                </div>
+                <main class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" role="main">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                        <h1 id="article-title" class="h2">新文章</h1>
+                        <div class="btn-toolbar mb-2 mb-md-0">
+                            <div class="btn-group mr-1">
+                                <button id="add-btn" class="btn btn-sm btn-success">Add</button>
+                            </div>
+                            <div class="btn-group mr-2">
+                                <button id="save-btn" class="btn btn-sm btn-outline-secondary">Save</button>
+                                <button id="publish-btn" class="btn btn-sm btn-outline-secondary">Publish</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="editormd">
+                        <textarea style="display:none;"></textarea>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/lib/editor.md/editormd.js"></script>
+    <script src="/dist/js/editor.bundle.js"></script>
+</html>

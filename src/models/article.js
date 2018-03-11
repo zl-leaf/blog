@@ -5,6 +5,7 @@ var config = require('../config/config.js');
 var request = require('request');
 
 function Article(data) {
+    this.id = data.id;
     this.title = data.title;
     this.slug = data.slug;
     this.keywords = data.keywords;
