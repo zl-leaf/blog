@@ -5,6 +5,7 @@ package-lock.json
 *.log
 node_modules/
 public/dist/
+public/lib/
 .deploy*/
 source/_posts/*
 webpack.dev.config.js
