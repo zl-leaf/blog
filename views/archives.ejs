@@ -8,20 +8,19 @@
         <div class="content">
           <section id="main">
             <% archives.forEach(function(archive) { %>
-              <% archive.archive_nodes.forEach(function(archive_node) { %>
               <section class="archives-wrap">
                 <h1><%- archive.title %></h1>
-                <ul>
-                  <% archive_node.articles.forEach(function(article) { %>
-                  <li>
-                    <time datetime="<%- article.date %>"><%- article.date %></time>
-                    <a href="<%- article.link %>"><%- article.title %></a>
-                  </li>
-                  <% }) %>
-                </ul>
-                <hr>
+                <% archive.archive_nodes.forEach(function(archive_node) { %>
+                  <ul>
+                    <% archive_node.articles.forEach(function(article) { %>
+                    <li>
+                      <time datetime="<%- article.date %>"><%- article.date %></time>
+                      <a href="<%- article.link %>"><%- article.title %></a>
+                    </li>
+                    <% }) %>
+                  </ul>
+                <% }) %>
               </section>
-              <% }) %>
             <% }) %>
           </section>
           <% include _partial/sidebar.ejs %>

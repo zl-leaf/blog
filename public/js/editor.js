@@ -1,15 +1,15 @@
-import Config from "config";
+var Config = require('config');
 
 $(function() {
   var Util = {
-    getArticleContentUrl: function(articleId) {
-      return Config.apiHost + '/api/editor/article/' + articleId;
+    getArticleUrl: function(articleId) {
+      return Config.apiHost + '/api/article/' + articleId + "?_with=content";
     },
     getCreateUrl: function() {
-      return Config.apiHost + '/api/editor/article/create';
+      return Config.apiHost + '/api/article/';
     },
     getUpdateUrl: function(articleId) {
-      return Config.apiHost + '/api/editor/article/' + articleId;
+      return Config.apiHost + '/api/article/' + articleId;
     }
   }
   var AritcleList = {
@@ -25,7 +25,7 @@ $(function() {
     editor: null,
     articleId: 0,
     init: function() {
-      $('#editormd textarea').text('```[T_T]\r\ntitle:\r\nslug:\r\n```\r\n---');
+      $('#editormd textarea').text(this.articleToContent());
       this.editor = editormd("editormd", {
         path : "/lib/editor.md/lib/",
         toolbarIcons: "simple",
@@ -50,8 +50,11 @@ $(function() {
     renderArticle: function(articleId) {
       this.articleId = articleId;
       var _this = this;
+
+      var metaUrl = Util.getArticleUrl(_this.articleId);
+
       $.ajax({
-        url: Util.getArticleContentUrl(_this.articleId),
+        url: metaUrl,
         type: 'get',
         dataType: 'json',
         success: function(ret) {
@@ -60,14 +63,14 @@ $(function() {
             var content = article.content;
 
             _this.updateTitle(article.title);
-            _this.editor.setValue(content.content);
+            _this.editor.setValue(_this.articleToContent(article));
           }
         }
       });
     },
     add: function() {
       this.articleId = 0;
-      this.editor.setValue('```[T_T]\r\ntitle:\r\nslug:\r\n```\r\n---');
+      this.editor.setValue(this.articleToContent());
       this.updateTitle('新文章');
       console.log('add:' + this.articleId);
     },
@@ -80,10 +83,12 @@ $(function() {
       } else {
         url = Util.getCreateUrl();
       }
+      var article = this.contentToArticle(content);
+      var articleJson = JSON.stringify(article);
       $.ajax({
         url: url,
         type: 'post',
-        data: {content: content},
+        data: articleJson,
         dataType: 'json',
         success: function(ret) {
           if (ret.code != 0) {
@@ -94,6 +99,44 @@ $(function() {
     },
     publish: function() {
       console.log('publish:' + this.articleId);
+    },
+    // article对象转化
+    articleToContent(article) {
+      var ret = "```[T_T]\r\n";
+      var articleAttr = new Array('title', 'slug', 'date', 'keywords', 'summary');
+      for (index in articleAttr) {
+        var attribute = articleAttr[index];
+        var data = '';
+        if (article && article[attribute]) {
+          data = article[attribute];
+        }
+        ret += attribute + ":" + data + '\r\n';
+      }
+      ret += "\r\n```\r\n---\r\n";
+      if (article && article.content.content) {
+        ret += article.content.content;
+      }
+      return ret;
+    },
+    contentToArticle(content) {
+      var ret = new Object();
+      var pregRet = new RegExp('```\\[T_T]\\s+(?<meta>.*)```\\s+---\\s+(?<content>.*)', 's').exec(content);
+      if (!pregRet) {
+        console.log('error');
+        return false;
+      }
+      var meta = pregRet.groups.meta;
+      var articleContent = pregRet.groups.content;
+      ret.content = new Object();
+      ret.content.content = articleContent;
+      // 遍历meta中的属性
+      var metaRegExp = new RegExp('(?<name>\\w+?)\:(?<val>.*)', 'g');
+      while ((metaPregRet = metaRegExp.exec(meta)) != null) {
+        var name = metaPregRet.groups.name;
+        var val = metaPregRet.groups.val;
+        ret[name] = val;
+      }
+      return ret;
     }
   }
   AritcleList.init();

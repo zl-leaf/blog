@@ -470,6 +470,9 @@ body {
   font-size: 25px;
   margin-bottom: 5px;
 }
+.archives-wrap ul {
+  margin-bottom: 16px;
+}
 .archives-wrap li {
   margin-bottom: 5px;
 }

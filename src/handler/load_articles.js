@@ -6,7 +6,7 @@ var Promise = require('bluebird');
 
 function loadArticles(page, rows) {
   var requestAsync = Promise.promisify(request);
-  return requestAsync(config.article.all_url).then(function(response) {
+  return requestAsync(config.article.list_url + "?sortby=date&order=desc").then(function(response) {
     var articles = new Array();
     if (!response.err && response.statusCode == 200) {
       var ret = JSON.parse(response.body);
