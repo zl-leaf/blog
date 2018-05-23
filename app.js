@@ -4,6 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+
+var security = require('./src/common/security');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -43,6 +46,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//session配置
+app.use(session({
+    cookie: { maxAge: 600000 },
+    secret: 'yipzale.com#2018',
+}));
+
+app.use(security);
 
 app.use('/', index);
 app.use('/users', users);
