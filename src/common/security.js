@@ -54,7 +54,6 @@ function auth(req, res, next) {
     }
   }).then(function(tokenRet) {
     var checkLoginUrl = config.oauth.checkLoginUrl + '?access_token=' + tokenRet.access_token;
-    console.log(checkLoginUrl);
     return requestAsync.getAsync(checkLoginUrl)
   }).then(function(response) {
     if (!response.err && response.statusCode == 200) {
