@@ -11,9 +11,11 @@ var config = {
     oauth: {
         authorizeUrl: "http://machinedog.yipzale.me:8080/oauth/authorize",
         tokenUrl: "http://machinedog:8080/oauth/token",
-        checkLoginUrl: "http://machinedog:8080/users/check_login",
         clientId: "m1",
         clientSecret: "s1",
+        getCheckLoginApi: function(userId, token) {
+            return "http://machinedog:8080/users/" + userId + "/check_login?access_token=" + token;
+        },
     }
 }
 module.exports = config;

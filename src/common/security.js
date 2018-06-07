@@ -53,7 +53,9 @@ function auth(req, res, next) {
       throw new Error("get token error.");
     }
   }).then(function(tokenRet) {
-    var checkLoginUrl = config.oauth.checkLoginUrl + '?access_token=' + tokenRet.access_token;
+    var checkLoginUrl = config.oauth.getCheckLoginApi(tokenRet.openId, tokenRet.access_token);
+    res.cookie('access_token', tokenRet.access_token, { expires: new Date(Date.now() + 7200000)});
+    res.cookie('openId', tokenRet.openId, { expires: new Date(Date.now() + 7200000)});
     return requestAsync.getAsync(checkLoginUrl)
   }).then(function(response) {
     if (!response.err && response.statusCode == 200) {
