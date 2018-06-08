@@ -1,5 +1,5 @@
 var Article = require('../models/article');
-var config = require('../config/config.js');
+var config = require('../config');
 
 var request = require('request');
 var Promise = require('bluebird');

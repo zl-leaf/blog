@@ -3,7 +3,7 @@ var request = require('request');
 var Promise = require('bluebird');
 var querystring = require('querystring');
 
-var config = require('../config/config');
+var config = require('../config');
 
 function needLogin(path) {
   var preg = /\/editor/;

@@ -1,6 +1,6 @@
 var marked = require('marked');
 var moment = require('moment');
-var config = require('../config/config.js');
+var config = require('../config');
 
 var request = require('request');
 

@@ -3,7 +3,8 @@ var config = {
     article: {
         list_url: "http://api.yipzale.me/api/article",
         recent_url: "http://api.yipzale.me/api/article?sortby=updated_at&order=desc&limit=10",
-        meta_url: "http://api.yipzale.me/api/article/"
+        meta_url: "http://api.yipzale.me/api/article/@{slug}",
+        content_url: "http://api.yipzale.me/api/article/@{slug}/content"
     },
     archives: {
         list_url: "http://api.yipzale.me/api/archive?_open=1&_with=articles"
@@ -13,9 +14,7 @@ var config = {
         tokenUrl: "http://machinedog:8080/oauth/token",
         clientId: "m1",
         clientSecret: "s1",
-        getCheckLoginApi: function(userId, token) {
-            return "http://machinedog:8080/users/" + userId + "/check_login?access_token=" + token;
-        },
+        check_login_url: "http://machinedog:8080/users/{userId}/check_login?access_token={token}",
     }
 }
 module.exports = config;

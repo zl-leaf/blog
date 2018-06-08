@@ -1,5 +1,5 @@
 var Article = require('../models/article');
-var config = require('../config/config.js');
+var config = require('../config');
 
 var request = require('request');
 var Promise = require('bluebird');
@@ -8,7 +8,7 @@ function loadArticle(year, month, slug) {
   var article;
 
   var requestAsync = Promise.promisify(request);
-  var metaUrl = config.article.meta_url + "@" + slug;
+  var metaUrl = config.article.getMetaApi(slug);
   return requestAsync(metaUrl).then(function(response) {
     if (!response.err && response.statusCode == 200) {
       var ret = JSON.parse(response.body);
@@ -18,7 +18,7 @@ function loadArticle(year, month, slug) {
       }
     }
   }).then(function (article) {
-    var contentUrl = config.article.meta_url + "@" + slug + '/content';
+    var contentUrl = config.article.getContentApi(slug);
     return requestAsync(contentUrl);
   }).then(function(response) {
     if (!response.err && response.statusCode == 200) {
