@@ -19,7 +19,7 @@ function redirectLogin(req, res) {
     client_id: config.oauth.clientId,
     redirect_uri: config.host + getPathName(req.originalUrl),
     response_type: 'code',
-    scope: 'read',
+    scope: 'admin',
   });
   var redirectUrl = config.oauth.authorizeUrl + '?' + query;
   res.redirect(redirectUrl);
