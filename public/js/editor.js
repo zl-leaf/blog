@@ -5,11 +5,11 @@ $(function() {
     getArticleUrl: function(articleId) {
       return Config.apiHost + '/api/article/' + articleId + "?_with=content";
     },
-    getCreateUrl: function() {
-      return Config.apiHost + '/api/article/';
+    getCreateUrl: function(openId, token) {
+      return Config.apiHost + '/api/article?openId=' + openId + '&access_token=' + token;
     },
-    getUpdateUrl: function(articleId) {
-      return Config.apiHost + '/api/article/' + articleId;
+    getUpdateUrl: function(articleId, openId, token) {
+      return Config.apiHost + '/api/article/' + articleId + '?openId=' + openId + '&access_token=' + token;
     }
   }
   var AritcleList = {
@@ -78,10 +78,16 @@ $(function() {
       var content = $('#editormd textarea').text();
 
       var url = '';
+      var openId = $.cookie('openId');
+      var token = $.cookie('access_token');
+      if (!openId || !token) {
+        alert('auth error');
+        return;
+      }
       if (this.articleId) {
-        url = Util.getUpdateUrl(this.articleId);
+        url = Util.getUpdateUrl(this.articleId, openId, token);
       } else {
-        url = Util.getCreateUrl();
+        url = Util.getCreateUrl(openId, token);
       }
       var article = this.contentToArticle(content);
       var articleJson = JSON.stringify(article);
@@ -89,6 +95,7 @@ $(function() {
         url: url,
         type: 'post',
         data: articleJson,
+        contentType: 'text/plain',
         dataType: 'json',
         success: function(ret) {
           if (ret.code != 0) {
