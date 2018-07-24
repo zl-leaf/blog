@@ -3,13 +3,13 @@ var Config = require('config');
 $(function() {
   var Util = {
     getArticleUrl: function(articleId) {
-      return Config.apiHost + '/api/article/' + articleId + "?_with=content";
+      return Config.apiHost + '/blog/articles/' + articleId + "?_with=content";
     },
     getCreateUrl: function(openId, token) {
-      return Config.apiHost + '/api/article?openId=' + openId + '&access_token=' + token;
+      return Config.apiHost + '/blog/articles?openId=' + openId + '&access_token=' + token;
     },
     getUpdateUrl: function(articleId, openId, token) {
-      return Config.apiHost + '/api/article/' + articleId + '?openId=' + openId + '&access_token=' + token;
+      return Config.apiHost + '/blog/articles/' + articleId + '?openId=' + openId + '&access_token=' + token;
     }
   }
   var AritcleList = {
@@ -95,7 +95,7 @@ $(function() {
         url: url,
         type: 'post',
         data: articleJson,
-        contentType: 'text/plain',
+        contentType: 'application/json',
         dataType: 'json',
         success: function(ret) {
           if (ret.code != 0) {
