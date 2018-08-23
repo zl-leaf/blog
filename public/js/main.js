@@ -1,6 +1,11 @@
 import '../css/style.css';
 import '../css/font-awesome.min.css';
 
+import 'gitment/style/default.css';
+import Gitment from 'gitment';
+
+var Config = require('config');
+
 window.onload = function() {
     document.getElementById('nav-search-btn').onclick = function() {
       var searchForm = document.getElementById('search-form-wrap');
@@ -22,4 +27,7 @@ window.onload = function() {
         }
       }
     }
+
+    const gitment = new Gitment(Config.comment)
+    gitment.render('comments')
 }

@@ -25,18 +25,9 @@
                   <%- article.content %>
                 </div>
                 <footer class="article-footer">
-                  <ul class="article-share-box bdsharebuttonbox right">
-                    <li class="article-share-btn">
-                      <a href="#" class="fa fa-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-                    </li>
-                    <li class="article-share-btn">
-                      <a href="#" class="fa fa-wechat"  data-cmd="weixin" title="分享到微信"></a>
-                    </li>
-                    <li class="article-share-btn">
-                      <a href="#" class="fa fa-youdaoyunbiji"  data-cmd="youdao" title="分享到有道云笔记"></a>
-                    </li>
-                  </ul>
+                  <% include _partial/share.ejs %>
                 </footer>
+                <div id="comments"></div>
               </div>
             </article>
           </section>
