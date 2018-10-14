@@ -1,13 +1,13 @@
 var config = {
     host: "http://www.yipzale.me",
     article: {
-        list_url: "http://api.yipzale.me/blog/article",
-        recent_url: "http://api.yipzale.me/blog/article?sortby=updated_at&order=desc&limit=10",
-        meta_url: "http://api.yipzale.me/blog/article/@{slug}",
-        content_url: "http://api.yipzale.me/blog/article/@{slug}/content"
+        list_url: "http://api.yipzale.me/blog/articles",
+        recent_url: "http://api.yipzale.me/blog/articles?sortby=updated_at&order=desc&limit=10",
+        meta_url: "http://api.yipzale.me/blog/articles/@{slug}",
+        content_url: "http://api.yipzale.me/blog/articles/@{slug}/content"
     },
     archives: {
-        list_url: "http://api.yipzale.me/blog/archive?_open=1&_with=articles"
+        list_url: "http://api.yipzale.me/blog/archives?_open=1&_with=articles"
     },
     oauth: {
         authorizeUrl: "http://security.yipzale.me/oauth/authorize",
