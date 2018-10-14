@@ -10,11 +10,11 @@ var config = {
         list_url: "http://api.yipzale.me/api/archive?_open=1&_with=articles"
     },
     oauth: {
-        authorizeUrl: "http://machinedog.yipzale.me:8080/oauth/authorize",
-        tokenUrl: "http://machinedog:8080/oauth/token",
+        authorizeUrl: "http://security.yipzale.me/oauth/authorize",
+        tokenUrl: "http://security:8080/oauth/token",
         clientId: "m1",
         clientSecret: "s1",
-        check_login_url: "http://machinedog:8080/users/{userId}/check_login?access_token={token}",
+        check_login_url: "http://security:8080/users/{userId}/check_login?access_token={token}",
     }
 }
 module.exports = config;
